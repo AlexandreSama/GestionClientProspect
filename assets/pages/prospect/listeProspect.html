@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Spark est un outil pour gérer des clients et des prospects en ligne">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spark | Liste des clients</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/all.css">
-<!--  <link rel="stylesheet" href="../css/liste.css">-->
+    <meta charset="UTF-8">
+    <meta name="description" content="Spark est un outil pour gérer des clients et des prospects en ligne">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <title>Spark | Liste des prospects</title>
+    <link rel="shortcut icon" href="../../images/favicon(1).ico" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/all.css">
 </head>
 <body>
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a href="../../index.html" class="navbar-brand">Spark</a>
+          <a href="../../../index.html" class="navbar-brand">Spark</a>
           <button
             type="button"
             class="navbar-toggler"
@@ -33,16 +33,14 @@
               <a href="#" class="nav-item nav-link" id="listeProspectBtn">Gérer vos prospects</a>
             </div>
             <div class="navbar-nav ms-auto">
-              <!-- Version pour utilisateur non connecté -->
-              <a href="assets/pages/login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
+              <a href="../user/login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
 
-              <!-- Version pour utilisateur connecté, cachée par défaut -->
               <div class="nav-item dropdown d-none" id="userDropdownContainer">
                 <a class="nav-link dropdown-toggle btn loginBtn" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Mon Compte
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                  <li><a class="dropdown-item" href="./profile.html">Mon Profil</a></li>
+                  <li><a class="dropdown-item" href="../user/profile.html">Mon Profil</a></li>
                   <li><a class="dropdown-item" href="#" id="disconnectBtn">Se déconnecter</a></li>
                 </ul>
               </div>
@@ -57,8 +55,9 @@
         class="mb-4"
         style="font-family: 'Poppins', sans-serif; color: #4F46E5; font-weight: 700;"
       >
-        Liste des clients
+        Liste des prospects
       </h1>
+
       <div class="table-responsive">
         <table class="table table-hover align-middle">
           <thead>
@@ -71,26 +70,26 @@
             <th scope="col">Nom de rue</th>
             <th scope="col">Code Postal</th>
             <th scope="col">Ville</th>
-            <th scope="col">Chiffre d'Affaire</th>
-            <th scope="col">Nombre d'employé</th>
+            <th scope="col">Date de Prospection</th>
+            <th scope="col">Est intéréssé</th>
             <th scope="col" style="min-width:200px;">Actions</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Shifty Corps</td>
+            <td>Woods Associates</td>
             <td>client1@gmail.com</td>
-            <td>06 45 34 56 78</td>
-            <td>14</td>
-            <td>Rue des fleurs</td>
-            <td>12545</td>
-            <td>Ameind</td>
-            <td>50000</td>
-            <td>50</td>
+            <td>06 12 34 75 78</td>
+            <td>10</td>
+            <td>Rue des lilas</td>
+            <td>75001</td>
+            <td>Bordeaux</td>
+            <td>2015-11-23</td>
+            <td>OUI</td>
             <td>
               <a
-                href="formClient.html?action=edit&id=1&raison=Shifty%20Corps&email=client1%40gmail.com&phone=06%2045%2034%2056%2078&numero=14&rue=Rue%20des%20fleurs&cp=12545&ville=Ameind&ca=50000&employe=50"
+                href="formProspect.html?action=edit&amp;id=1&amp;raison=Woods%20Associates&amp;email=client1%40gmail.com&amp;phone=06%2012%2034%2075%2078&amp;numero=10&amp;rue=Rue%20des%20lilas&amp;cp=75001&amp;ville=Bordeaux&amp;dateProspection=2015-11-23&amp;estInteress%C3%A9=OUI"
                 class="btn btn-sm btn-primary"
               >
                 Modifier
@@ -100,18 +99,18 @@
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Hammer Inc.</td>
-            <td>client2@gmail.com</td>
-            <td>06 45 34 74 78</td>
-            <td>1</td>
-            <td>Boulevard Francis</td>
-            <td>45856</td>
-            <td>Alamein</td>
-            <td>250000</td>
-            <td>1500</td>
+            <td>Prospect Y</td>
+            <td>prospect2@gmail.com</td>
+            <td>06 12 34 86 78</td>
+            <td>10</td>
+            <td>Rue des cocas</td>
+            <td>80548</td>
+            <td>Francisville</td>
+            <td>2025-01-23</td>
+            <td>NON</td>
             <td>
               <a
-                href="formClient.html?action=edit&id=2&raison=Hammer%20Inc.&email=client2%40gmail.com&phone=06%2045%2034%2074%2078&numero=1&rue=Boulevard%20Francis&cp=45856&ville=Alamein&ca=250000&employe=1500"
+                href="formProspect.html?action=edit&amp;id=2&amp;raison=Prospect%20Y&amp;email=prospect2%40gmail.com&amp;phone=06%2012%2034%2086%2078&amp;numero=10&amp;rue=Rue%20des%20cocas&amp;cp=80548&amp;ville=Francisville&amp;dateProspection=2025-01-23&amp;estInteress%C3%A9=NON"
                 class="btn btn-sm btn-primary"
               >
                 Modifier
@@ -124,10 +123,10 @@
       </div>
       <div class="text-end mt-3">
         <a
-          href="formClient.html"
+          href="formProspect.html"
           class="btn btn-success"
         >
-          Ajouter un client
+          Ajouter un prospect
         </a>
       </div>
     </main>
@@ -136,17 +135,17 @@
       <div class="container">
         <footer class="py-3 my-4">
           <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Mentions Légales</a></li>
+            <li class="nav-item"><a href="../../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+              <li class="nav-item"><a href="../mentionsLegales.html" class="nav-link px-2 text-body-secondary">Mentions Légales</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">A propos de nous</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Nous contacter</a></li>
+              <li class="nav-item"><a href="../contact.html" class="nav-link px-2 text-body-secondary">Nous contacter</a></li>
           </ul>
           <p class="text-center text-body-secondary">&copy; 2025 Spark, Inc</p>
         </footer>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../js/all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../js/all.js"></script>
 </body>
 </html>

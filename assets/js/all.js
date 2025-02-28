@@ -7,16 +7,16 @@ const gererProspectBtn = document.querySelector('#listeProspectBtn');
 if(localStorage.getItem('isLoggedIn') === "yes") {
     userDropdownContainer.classList.remove('d-none');
     loginBtn.classList.add('d-none');
-    gereClientBtn.href = '/GestionClientProspect/assets/pages/listeClient.html';
-    gererProspectBtn.href = '/GestionClientProspect/assets/pages/listeProspect.html';
+    gereClientBtn.href = '/GestionClientProspect/assets/pages/client/listeClient.html';
+    gererProspectBtn.href = '/GestionClientProspect/assets/pages/prospect/listeProspect.html';
     if(!localStorage.getItem("alreadyLoggedIn")) {
         localStorage.setItem("alreadyLoggedIn", "yes");
     }
 }else{
     loginBtn.classList.remove('d-none');
     userDropdownContainer.classList.add('d-none');
-    gereClientBtn.href = '/GestionClientProspect/assets/pages/login.html';
-    gererProspectBtn.href = '/GestionClientProspect/assets/pages/login.html';
+    gereClientBtn.href = '/GestionClientProspect/assets/pages/user/login.html';
+    gererProspectBtn.href = '/GestionClientProspect/assets/pages/user/login.html';
 }
 
 disconnectBtn.addEventListener('click', (e) => {

@@ -16,6 +16,16 @@
     --accent-orange: #F97316;   /* Orange 500 */
 }
 
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter-VariableFont_opsz,wght.ttf');
+}
+
 html, body {
     height: 100%;
     margin: 0;
