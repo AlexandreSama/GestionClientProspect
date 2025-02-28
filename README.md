@@ -19,13 +19,8 @@ Projet pour l'ECF Jakarta + Springboot
 
 ## Roadmap
 
-- Création d'un utilisateur
-- Modification / Suppression d'un utilisateur
-- Création d'un Client / Prospect
-- Modification / Suppression d'un Client / Prospect
 - Ajout d'un Contrat a un Client
 - Modification / Suppression d'un Contrat
-- Afficher la liste des Clients / Prospects
 - Afficher la liste des Contrats
 
 - Passer a Tailwind CSS et SCSS
