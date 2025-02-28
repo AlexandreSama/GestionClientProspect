@@ -13,6 +13,6 @@ submitBtn.addEventListener('click', e => {
         localStorage.setItem("email", email);
         localStorage.setItem("isLoggedIn", "yes");
         localStorage.setItem("role", "Membre")
-        location.href="/GestionClientProspect/index.html";
+        location.href="../../../index.html";
     }
 })
