@@ -1,9 +1,1 @@
-const nameInfo = document.querySelector("#nomInfo");
-const prenomInfo = document.querySelector("#prenomInfo");
-const emailInfo = document.querySelector("#emailInfo");
-const roleInfo = document.querySelector("#roleInfo");
-const nbClientsInfo = document.querySelector("#nbClientsInfo");
-const nbProspectsInfo = document.querySelector("#nbProspectsInfo");
-
-emailInfo.innerHTML += localStorage.getItem("email");
-roleInfo.innerHTML += localStorage.getItem("role");
+const nameInfo=document.querySelector("#nomInfo"),prenomInfo=document.querySelector("#prenomInfo"),emailInfo=document.querySelector("#emailInfo"),roleInfo=document.querySelector("#roleInfo"),nbClientsInfo=document.querySelector("#nbClientsInfo"),nbProspectsInfo=document.querySelector("#nbProspectsInfo");emailInfo.innerHTML+=localStorage.getItem("email"),roleInfo.innerHTML+=localStorage.getItem("role");
