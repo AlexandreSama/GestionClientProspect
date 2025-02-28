@@ -36,7 +36,7 @@
                 </div>
                 <div class="navbar-nav ms-auto">
                     <!-- Version pour utilisateur non connecté -->
-                    <a href="assets/pages/login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
+                    <a href="../user/login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
 
                     <!-- Version pour utilisateur connecté, cachée par défaut -->
                     <div class="nav-item dropdown d-none" id="userDropdownContainer">
@@ -76,6 +76,7 @@
                 <th scope="col">Ville</th>
                 <th scope="col">Chiffre d'Affaire</th>
                 <th scope="col">Nombre d'employé</th>
+                <th scope="col">Contrats</th>
                 <th scope="col" style="min-width:200px;">Actions</th>
             </tr>
             </thead>
@@ -91,6 +92,9 @@
                 <td>Ameind</td>
                 <td>50000</td>
                 <td>50</td>
+                <td>
+                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#contractsModal">Voir les contrats</button>
+                </td>
                 <td>
                     <a
                         href="formClient.html?action=edit&id=1&raison=Shifty%20Corps&email=client1%40gmail.com&phone=06%2045%2034%2056%2078&numero=14&rue=Rue%20des%20fleurs&cp=12545&ville=Ameind&ca=50000&employe=50"
@@ -113,6 +117,9 @@
                 <td>250000</td>
                 <td>1500</td>
                 <td>
+                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#contractsModal">Voir les contrats</button>
+                </td>
+                <td>
                     <a
                         href="formClient.html?action=edit&id=2&raison=Hammer%20Inc.&email=client2%40gmail.com&phone=06%2045%2034%2074%2078&numero=1&rue=Boulevard%20Francis&cp=45856&ville=Alamein&ca=250000&employe=1500"
                         class="btn btn-sm btn-primary"
@@ -132,6 +139,56 @@
         >
             Ajouter un client
         </a>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="contractsModal" tabindex="-1" aria-labelledby="contractsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contractsModalLabel">Liste des Contrats</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Identifiant</th>
+                                <th>Libellé du contrat</th>
+                                <th>Montant du contrat</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Contrat A</td>
+                                <td>1 000 €</td>
+                                <td>
+                                    <a href="../contract/formContract.html?action=edit&id=1&libelle=Contrat%20A&montant=1000" class="btn btn-sm btn-primary">Modifier</a>
+                                    <button class="btn btn-sm btn-danger ms-2">Supprimer</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Contrat B</td>
+                                <td>2 500 €</td>
+                                <td>
+                                    <a href="../contract/formContract.html?action=edit&id=2&libelle=Contrat%20B&montant=2500" class="btn btn-sm btn-primary">Modifier</a>
+                                    <button class="btn btn-sm btn-danger ms-2">Supprimer</button>
+                                </td>
+                            </tr>
+                            <!-- Ajoutez d'autres lignes selon vos besoins -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <a href="../contract/formContract.html" class="btn btn-success">Ajouter un contrat</a>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
