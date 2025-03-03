@@ -72,14 +72,30 @@
                 <th scope="col">Code Postal</th>
                 <th scope="col">Ville</th>
                 <th scope="col">Date de Prospection</th>
-                <th scope="col">Est intéréssé</th>
+                <th scope="col">Est intéressé</th>
                 <th scope="col" style="min-width:200px;">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Woods Associates</td>
+                <td>
+                    <a href="#"
+                       class="text-decoration-none entity-link"
+                       data-bs-toggle="modal"
+                       data-bs-target="#clientModal"
+
+                       data-raison="Woods Associates"
+                       data-email="client1@gmail.com"
+                       data-phone="06 12 34 75 78"
+                       data-prospection="2015-11-23"
+                       data-interest="OUI"
+                       data-localisation="10 Rue des lilas, 75001 Bordeaux"
+                       data-meteo="Ensoleillé"
+                    >
+                        Woods Associates
+                    </a>
+                </td>
                 <td>client1@gmail.com</td>
                 <td>06 12 34 75 78</td>
                 <td>10</td>
@@ -100,7 +116,23 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td>Prospect Y</td>
+                <td>
+                    <a href="#"
+                       class="text-decoration-none entity-link"
+                       data-bs-toggle="modal"
+                       data-bs-target="#clientModal"
+
+                       data-raison="Prospect Y"
+                       data-email="prospect2@gmail.com"
+                       data-phone="06 12 34 86 78"
+                       data-prospection="2025-01-23"
+                       data-interest="NON"
+                       data-localisation="10 Rue des cocas, 80548 Francisville"
+                       data-meteo="Ensoleillé"
+                    >
+                        Prospect Y
+                    </a>
+                </td>
                 <td>prospect2@gmail.com</td>
                 <td>06 12 34 86 78</td>
                 <td>10</td>
@@ -132,12 +164,45 @@
     </div>
 </main>
 
+<!-- Utilise le même ID que la modale clients pour un script commun -->
+<div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Vous pouvez mettre "Détails" ou "Détails du prospect" au choix -->
+                <h1 class="modal-title fs-5" id="clientModalLabel">Détails du prospect</h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Raison Sociale :</strong> <span id="modalRaisonSociale"></span></p>
+                <p><strong>Email :</strong> <span id="modalEmail"></span></p>
+                <p><strong>Numéro de téléphone :</strong> <span id="modalTelephone"></span></p>
+                <p><strong>Date de prospection :</strong> <span id="modalDateProspection"></span></p>
+                <p><strong>Est intéressé :</strong> <span id="modalInteress"></span></p>
+                <p><strong>Localisation :</strong> <span id="modalLocalisation"></span></p>
+                <p><strong>Météo :</strong> <span id="modalMeteo"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="../../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a>
-                </li>
+                <li class="nav-item"><a href="../../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
                 <li class="nav-item"><a href="../mentionsLegales.html" class="nav-link px-2 text-body-secondary">Mentions
                     Légales</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">A propos de nous</a></li>
@@ -148,7 +213,10 @@
         </footer>
     </div>
 </footer>
+
 <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="../../js/all.js"></script>
+<!-- Script commun, le même que pour la page client -->
+<script src="../../js/client-prospect-contract/client-prospectModal.js"></script>
 </body>
 </html>

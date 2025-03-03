@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="../../images/favicon(1).ico" type="image/x-icon">
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../scss/all.css">
-    <!--  <link rel="stylesheet" href="../css/liste.css">-->
+    <!-- <link rel="stylesheet" href="../css/liste.css">-->
 </head>
 <body>
 
@@ -80,9 +80,27 @@
             </tr>
             </thead>
             <tbody>
+            <!-- Exemple de ligne Client -->
             <tr>
                 <th scope="row">1</th>
-                <td>Shifty Corps</td>
+                <td>
+                    <!-- Lien qui ouvre la modale (même classe pour client ou prospect) -->
+                    <a href="#"
+                       class="text-decoration-none entity-link"
+                       data-bs-toggle="modal"
+                       data-bs-target="#clientModal"
+
+                       data-raison="Shifty Corps"
+                       data-email="client1@gmail.com"
+                       data-phone="06 12 34 86 78"
+                       data-chiffreAffaire="50000"
+                       data-nbrEmploye="50"
+                       data-localisation="14 Rue des fleurs, 12545 Ameind"
+                       data-meteo="Ensoleillé"
+                    >
+                        Shifty Corps
+                    </a>
+                </td>
                 <td>client1@gmail.com</td>
                 <td>06 45 34 56 78</td>
                 <td>14</td>
@@ -104,9 +122,27 @@
                     <button class="btn btn-sm btn-danger ms-2">Supprimer</button>
                 </td>
             </tr>
+
+            <!-- Exemple de ligne Client -->
             <tr>
                 <th scope="row">2</th>
-                <td>Hammer Inc.</td>
+                <td>
+                    <a href="#"
+                       class="text-decoration-none entity-link"
+                       data-bs-toggle="modal"
+                       data-bs-target="#clientModal"
+
+                       data-raison="Hammer Inc."
+                       data-email="client2@gmail.com"
+                       data-phone="06 45 34 74 78"
+                       data-chiffreAffaire="250000"
+                       data-nbrEmploye="1500"
+                       data-localisation="1 Boulevard Francis, 45856 Alamein"
+                       data-meteo="Nuageux"
+                    >
+                        Hammer Inc.
+                    </a>
+                </td>
                 <td>client2@gmail.com</td>
                 <td>06 45 34 74 78</td>
                 <td>1</td>
@@ -128,18 +164,20 @@
                     <button class="btn btn-sm btn-danger ms-2">Supprimer</button>
                 </td>
             </tr>
+
+            <!-- Vous pouvez ajouter ici d'autres lignes si vous avez des Prospects,
+                 en utilisant la même classe et les mêmes data-* -->
             </tbody>
         </table>
     </div>
+
     <div class="text-end mt-3">
-        <a
-            href="formClient.html"
-            class="btn btn-success"
-        >
+        <a href="formClient.html" class="btn btn-success">
             Ajouter un client
         </a>
     </div>
-    <!-- Modal -->
+
+    <!-- Modal Contrats -->
     <div class="modal fade" id="contractsModal" tabindex="-1" aria-labelledby="contractsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -191,24 +229,55 @@
     </div>
 </main>
 
+<!-- Modal unique pour Clients / Prospects -->
+<div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="clientModalLabel">Détails</h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Raison Sociale :</strong> <span id="modalRaisonSociale"></span></p>
+                <p><strong>Email :</strong> <span id="modalEmail"></span></p>
+                <p><strong>Numéro de téléphone :</strong> <span id="modalTelephone"></span></p>
+                <p><strong>Chiffre d'affaire :</strong> <span id="modalChiffreAffaire"></span></p>
+                <p><strong>Nombre d'employé :</strong> <span id="modalNbrEmploye"></span></p>
+                <p><strong>Localisation :</strong> <span id="modalLocalisation"></span></p>
+                <p><strong>Météo :</strong> <span id="modalMeteo"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="../../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a>
-                </li>
-                <li class="nav-item"><a href="../mentionsLegales.html" class="nav-link px-2 text-body-secondary">Mentions
-                    Légales</a></li>
+                <li class="nav-item"><a href="../../../index.html" class="nav-link px-2 text-body-secondary">Accueil</a></li>
+                <li class="nav-item"><a href="../mentionsLegales.html" class="nav-link px-2 text-body-secondary">Mentions Légales</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">A propos de nous</a></li>
-                <li class="nav-item"><a href="../contact.html" class="nav-link px-2 text-body-secondary">Nous
-                    contacter</a></li>
+                <li class="nav-item"><a href="../contact.html" class="nav-link px-2 text-body-secondary">Nous contacter</a></li>
             </ul>
             <p class="text-center text-body-secondary">&copy; 2025 Spark, Inc</p>
         </footer>
     </div>
 </footer>
 
-    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="../../js/all.js"></script>
+<script src="../../js/client-prospect-contract/client-prospectModal.js"></script>
 </body>
 </html>
