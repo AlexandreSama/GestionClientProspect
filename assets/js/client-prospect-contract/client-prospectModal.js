@@ -57,7 +57,7 @@ entityLinks.forEach(link => {
 
         await getMeteoByCoordinates(coordonnes).then(r => {
             const modalMeteo = document.getElementById('modalMeteo');
-            if (modalMeteo) modalMeteo.textContent = meteo;
+            if (modalMeteo) modalMeteo.textContent = r;
         })
 
     });
@@ -69,7 +69,6 @@ async function getCoordinatedByAdress(adress){
     await fetch("https://api-adresse.data.gouv.fr/search/?q=" + adress)
     .then(async res => {
         await res.json().then(data => {
-            console.log(data)
             coordinates = data.features[0].geometry.coordinates[1] + ',' + data.features[0].geometry.coordinates[0]
         })
     })
@@ -82,9 +81,56 @@ async function getMeteoByCoordinates(coordinates){
 
     await fetch(apiMeteoURL + coordinates + apiMeteoAuth)
         .then(async res => {
-            await res.json().then(data => {
+            await res.json().then(async data => {
                 console.log(data)
-                meteo = data;
+                await transformMeteoData(data).then(meteoData => {
+                    meteo = meteoData;
+                })
             })
         })
+    return meteo;
+}
+
+async function transformMeteoData(meteo) {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    let date = `${year}-${month}-${day}`;
+
+    const currentHour = now.getHours();
+    let targetHour;
+
+    if (currentHour < 13) {         // Entre 00h et 12h59 → météo de 6h
+        targetHour = "06:00:00";
+    } else if (currentHour < 19) {  // Entre 13h et 18h59 → météo de 13h
+        targetHour = "13:00:00";
+    } else {                        // Entre 19h et 23h59 → météo de 19h
+        targetHour = "19:00:00";
+    }
+
+    let fullDate = date + ' ' + targetHour
+
+    console.log(meteo[fullDate])
+
+    const temperature = (meteo[fullDate].temperature["2m"] - 273.15).toFixed();
+    const pluie = meteo[fullDate].pluie > 0 ? "risque de pluie" : "pas de pluie";
+    const risqueNeige = meteo[fullDate].risque_neige === "oui" ? "possibles chutes de neige" : "pas de possible chute de neige";
+    const vent = meteo[fullDate].vent_moyen["10m"];
+    const ventTexte = vent > 20 ? `vent fort de ${vent.toFixed()} km/h` : `vent faible de ${vent.toFixed()} km/h`;
+    const nebulosite = meteo[fullDate].nebulosite.totale;
+    let ciel;
+
+    if (nebulosite < 20) {
+        ciel = "ciel dégagé";
+    } else if (nebulosite < 50) {
+        ciel = "quelques nuages";
+    } else if (nebulosite < 80) {
+        ciel = "ciel nuageux";
+    } else {
+        ciel = "ciel couvert";
+    }
+
+    return `Il fait ${temperature}°C, ${pluie}, ${risqueNeige}, ${ventTexte}, avec un ${ciel}.`;
 }
