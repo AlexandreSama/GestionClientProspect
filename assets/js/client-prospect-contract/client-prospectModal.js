@@ -1,4 +1,3 @@
-// Sélectionne tous les liens qui ont la classe "entity-link"
 const entityLinks = document.querySelectorAll('.entity-link');
 let coordonnes;
 let apiMeteoURL = "https://www.infoclimat.fr/public-api/gfs/json?_ll="
@@ -23,7 +22,6 @@ entityLinks.forEach(link => {
 
         // Champs communs
         const localisation = link.getAttribute('data-localisation') || '';
-        const meteo = link.getAttribute('data-meteo') || '';
 
         // Injecte les infos dans la modale
         // ATTENTION : selon la page, tous les spans n'existent pas forcément.
@@ -49,9 +47,17 @@ entityLinks.forEach(link => {
         const modalInteress = document.getElementById('modalInteress');
         if (modalInteress) modalInteress.textContent = interest;
 
+        const modalAdress = document.getElementById('modalAdresse');
+        if (modalAdress) modalAdress.textContent = localisation;
+
         await getCoordinatedByAdress(localisation).then(r => {
-            const modalLocalisation = document.getElementById('modalLocalisation');
-            if (modalLocalisation) modalLocalisation.textContent = r;
+            const map = L.map('modalLocalisation').setView(r, 13);
+            L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`, {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            const marker = L.marker(r).addTo(map);
+            marker.bindPopup("<b>raison</b>").openPopup();
             coordonnes = r;
         })
 
@@ -69,7 +75,7 @@ async function getCoordinatedByAdress(adress){
     await fetch("https://api-adresse.data.gouv.fr/search/?q=" + adress)
     .then(async res => {
         await res.json().then(data => {
-            coordinates = data.features[0].geometry.coordinates[1] + ',' + data.features[0].geometry.coordinates[0]
+            coordinates = [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]];
         })
     })
 
