@@ -5,7 +5,7 @@
     <meta name="description" content="Spark est un outil pour gérer des clients et des prospects en ligne">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index, follow">
-    <title>Spark | Formulaire prospect</title>
+    <title>Spark | Formulaire utilisateur</title>
     <link rel="shortcut icon" href="../../images/favicon(1).ico" type="image/x-icon">
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../scss/all.css">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="navbar-nav ms-auto">
                     <!-- Version pour utilisateur non connecté -->
-                    <a href="../user/login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
+                    <a href="login.html" class="btn loginBtn" id="loginBtn">Se connecter</a>
 
                     <!-- Version pour utilisateur connecté, cachée par défaut -->
                     <div class="nav-item dropdown d-none" id="userDropdownContainer">
@@ -43,7 +43,7 @@
                             Mon Compte
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="../user/profile.html">Mon Profil</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Mon Profil</a></li>
                             <li><a class="dropdown-item" href="#" id="disconnectBtn">Se déconnecter</a></li>
                         </ul>
                     </div>
@@ -54,30 +54,28 @@
 </header>
 
 <main class="container my-5">
-    <h1 class="mb-4" style="font-family: 'Poppins', sans-serif; color: #4F46E5; font-weight: 700;">
-        Formulaire Prospect
-    </h1>
-
+    <h1 id="pageTitle" class="header-title mb-4 text-center">Ajouter un utilisateur</h1>
     <form>
         <div class="mb-3">
-            <label for="prospectId" class="form-label">Identifiant</label>
+            <label for="nom" class="form-label">Nom</label>
             <input
                 type="text"
                 class="form-control"
-                id="prospectId"
-                name="prospectId"
-                readonly
+                id="nom"
+                name="nom"
+                placeholder="Votre nom"
+                required
             />
         </div>
 
         <div class="mb-3">
-            <label for="raisonSociale" class="form-label">Raison Sociale</label>
+            <label for="prenom" class="form-label">Prénom</label>
             <input
                 type="text"
                 class="form-control"
-                id="raisonSociale"
-                name="raisonSociale"
-                placeholder="Entrez la raison sociale"
+                id="prenom"
+                name="prenom"
+                placeholder="Votre prénom"
                 required
             />
         </div>
@@ -89,103 +87,15 @@
                 class="form-control"
                 id="email"
                 name="email"
-                placeholder="exemple@domaine.com"
+                placeholder="votre.email@exemple.com"
                 required
             />
         </div>
 
-        <div class="mb-3">
-            <label for="phone" class="form-label">Numéro de téléphone</label>
-            <input
-                type="tel"
-                class="form-control"
-                id="phone"
-                name="phone"
-                placeholder="06 12 34 56 78"
-            />
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="button" class="btn btn-secondary ms-2" onclick="history.back()">Annuler</button>
         </div>
-
-        <div class="mb-3">
-            <label for="numeroRue" class="form-label">Numéro de rue</label>
-            <input
-                type="text"
-                class="form-control"
-                id="numeroRue"
-                name="numeroRue"
-                placeholder="Ex : 14"
-            />
-        </div>
-
-        <div class="mb-3">
-            <label for="nomRue" class="form-label">Nom de rue</label>
-            <input
-                type="text"
-                class="form-control"
-                id="nomRue"
-                name="nomRue"
-                placeholder="Ex : Rue des Fleurs"
-            />
-        </div>
-
-        <div class="mb-3">
-            <label for="codePostal" class="form-label">Code Postal</label>
-            <input
-                type="text"
-                class="form-control"
-                id="codePostal"
-                name="codePostal"
-                placeholder="Ex : 75000"
-            />
-        </div>
-
-        <div class="mb-3">
-            <label for="ville" class="form-label">Ville</label>
-            <input
-                type="text"
-                class="form-control"
-                id="ville"
-                name="ville"
-                placeholder="Ex : Paris"
-            />
-        </div>
-
-        <div class="mb-3">
-            <label for="dateProspection" class="form-label">Date de prospection</label>
-            <input
-                type="date"
-                class="form-control"
-                id="dateProspection"
-                name="dateProspection"
-            />
-        </div>
-
-        <div class="mb-4">
-            <label for="estInteressé" class="form-label">Est Intéressé ?</label>
-            <select
-                class="form-select"
-                id="estInteressé"
-                name="estInteressé"
-                required
-            >
-                <option value="">Sélectionnez une option</option>
-                <option value="OUI">OUI</option>
-                <option value="NON">NON</option>
-            </select>
-        </div>
-
-        <button
-            type="submit"
-            class="btn btn-primary"
-        >
-            Enregistrer
-        </button>
-        <button
-            type="button"
-            class="btn btn-secondary ms-2"
-            onclick="history.back()"
-        >
-            Annuler
-        </button>
     </form>
 </main>
 
@@ -206,8 +116,8 @@
     </div>
 </footer>
 
-    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="../../js/client-prospect-contract/form.js"></script>
+<script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="../../js/all.js"></script>
+<script src="../../js/user/formUserUpdate.js"></script>
 </body>
 </html>

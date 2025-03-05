@@ -1,5 +1,6 @@
 const entityLinks = document.querySelectorAll('.entity-link');
 let coordonnes;
+let map;
 let apiMeteoURL = "https://www.infoclimat.fr/public-api/gfs/json?_ll="
 let apiMeteoAuth = "&_auth=ARtUQwR6VHZXegYxBnAGLwJqDzpZL1B3BHgEZw5rUC0FblEwB2dWMF8xWicCLQE3Un8PbA02ADADaAF5CHpUNQFrVDgEb1QzVzgGYwYpBi0CLA9uWXlQdwRmBGsOa1" +
     "AtBWRRNgdlVipfNlo9AiwBNFJhD2cNLQAnA2EBYQhhVDYBYlQ5BGBUNlc" +
@@ -51,7 +52,10 @@ entityLinks.forEach(link => {
         if (modalAdress) modalAdress.textContent = localisation;
 
         await getCoordinatedByAdress(localisation).then(r => {
-            const map = L.map('modalLocalisation').setView(r, 13);
+            if(map !== undefined) {
+                map.remove();
+            }
+            map = L.map('modalLocalisation').setView(r, 13);
             L.tileLayer(`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`, {
                 maxZoom: 19,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -88,7 +92,6 @@ async function getMeteoByCoordinates(coordinates){
     await fetch(apiMeteoURL + coordinates + apiMeteoAuth)
         .then(async res => {
             await res.json().then(async data => {
-                console.log(data)
                 await transformMeteoData(data).then(meteoData => {
                     meteo = meteoData;
                 })
@@ -109,7 +112,7 @@ async function transformMeteoData(meteo) {
     let targetHour;
 
     if (currentHour < 13) {         // Entre 00h et 12h59 → météo de 6h
-        targetHour = "06:00:00";
+        targetHour = "07:00:00";
     } else if (currentHour < 19) {  // Entre 13h et 18h59 → météo de 13h
         targetHour = "13:00:00";
     } else {                        // Entre 19h et 23h59 → météo de 19h
@@ -117,8 +120,6 @@ async function transformMeteoData(meteo) {
     }
 
     let fullDate = date + ' ' + targetHour
-
-    console.log(meteo[fullDate])
 
     const temperature = (meteo[fullDate].temperature["2m"] - 273.15).toFixed();
     const pluie = meteo[fullDate].pluie > 0 ? "risque de pluie" : "pas de pluie";
