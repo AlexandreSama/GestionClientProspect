@@ -74,16 +74,6 @@ main {
   text-decoration-color: var(--secondary-violet);
 }
 
-.signup a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 14px;
-}
-.signup a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--secondary-violet);
-}
-
 .sign {
   display: block;
   width: 100%;

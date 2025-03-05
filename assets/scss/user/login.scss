@@ -82,20 +82,6 @@ main {
     }
 }
 
-// .signup (similaire à .forgot a)
-.signup {
-    a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-size: 14px;
-
-        &:hover {
-            text-decoration: underline;
-            text-decoration-color: var(--secondary-violet);
-        }
-    }
-}
-
 // .sign
 .sign {
     display: block;
