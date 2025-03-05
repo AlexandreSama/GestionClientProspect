@@ -52,7 +52,7 @@ entityLinks.forEach(link => {
         if (modalAdress) modalAdress.textContent = localisation;
 
         await getCoordinatedByAdress(localisation).then(r => {
-            if(map !== undefined) {
+            if (map !== undefined) {
                 map.remove();
             }
             map = L.map('modalLocalisation').setView(r, 13);
@@ -61,7 +61,7 @@ entityLinks.forEach(link => {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             const marker = L.marker(r).addTo(map);
-            marker.bindPopup("<b>raison</b>").openPopup();
+            marker.bindPopup("<b>" + raison + "</b>").openPopup();
             coordonnes = r;
         })
 
@@ -73,20 +73,20 @@ entityLinks.forEach(link => {
     });
 });
 
-async function getCoordinatedByAdress(adress){
+async function getCoordinatedByAdress(adress) {
     let coordinates;
 
     await fetch("https://api-adresse.data.gouv.fr/search/?q=" + adress)
-    .then(async res => {
-        await res.json().then(data => {
-            coordinates = [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]];
+        .then(async res => {
+            await res.json().then(data => {
+                coordinates = [data.features[0].geometry.coordinates[1], data.features[0].geometry.coordinates[0]];
+            })
         })
-    })
 
     return coordinates;
 }
 
-async function getMeteoByCoordinates(coordinates){
+async function getMeteoByCoordinates(coordinates) {
     let meteo;
 
     await fetch(apiMeteoURL + coordinates + apiMeteoAuth)
